@@ -84,6 +84,15 @@ const data = [{
         thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+    },
+    {
+        title: 'Rons 94 Meetings',
+        date: 'March 31 2010',
+        firstParagraph: 'Due to a mistake by April (Aubrey Plaza), Ron (Nick Offerman) is forced to deal with 93 meetings in a single day. He enlists the aid of April, Andy, Leslie and Ann to help handle them, while telling Jerry that he is free to go home early.',
+
+        secondParagraph: 'Leslie is outraged when Jessica reveals her plans to demolish an old gazebo in the backyard of Turnbill Mansion, the site of a historic wedding between a Pawnee Native American and white woman, which became a "bloodbath" when knowledge of the wedding became public.',
+
+        thirdParagraph: 'April successfully scares off someone wanting to meet with Ron by scheduling absurd meeting dates and times such as June 50th, the "one-teenth" of "march-tember" and 2:65 PM. Ron gives her an approving smile and nod while watching from his office.'
     }
 ];
 
@@ -112,17 +121,60 @@ const data = [{
 
 */
 
-function articleCreator(title, date, first, second, third) {
-    const title = document.createElement("h2");
 
-    const date = document.createElement("p");
-    date.classList.add(".date");
 
-    const expand = document.createElement("span");
-    expand.classList.add(".expandButton");
+const createArticle = (title, date, first, second, third) => {
 
-    expand.addEventListener("toggle", () => {
+    const newArticle = document.createElement("div");
+    const articleTitle = document.createElement("h2");
+    const articleDate = document.createElement("p");
+    const firstParagraph = document.createElement("p");
+    const secondParagraph = document.createElement("p");
+    const thirdParagraph = document.createElement("p");
+    const expandBtn = document.createElement("span");
 
-    });
-    return
+
+    newArticle.appendChild(articleTitle);
+    newArticle.appendChild(articleDate);
+    // newArticle.appendChild(firstParagraph);
+    // newArticle.appendChild(secondParagraph);
+    // newArticle.appendChild(thirdParagraph);
+    newArticle.appendChild(expandBtn);
+
+
+    newArticle.classList.add("articles");
+    articleTitle.classList.add("h2");
+    articleDate.classList.add("date");
+    firstParagraph.style.display = "hidden"
+    secondParagraph.style.display = "hidden"
+    thirdParagraph.style.display = "hidden"
+        // firstParagraph.classList.add("article", "close")
+        // secondParagraph.classList.add("article", "close");
+        // thirdParagraph.classList.add("article", "close");
+    expandBtn.textContent = "Expand"
+    expandBtn.classList.add("article", "expandButton");
+
+
+    articleTitle.textContent = title;
+    articleDate.textContent = date;
+    firstParagraph.textContent = first;
+    secondParagraph.textContent = second;
+    thirdParagraph.textContent = third;
+
+    expandBtn.addEventListener("click", () => {
+        newArticle.classList.toggle("article-open");
+        newArticle.classList.toggle("article", "close")
+        newArticle.appendChild(firstParagraph);
+        newArticle.appendChild(secondParagraph);
+        newArticle.appendChild(thirdParagraph);
+        firstParagraph.classList.add("article")
+        secondParagraph.classList.add("article");
+        thirdParagraph.classList.add("article");
+    })
+    return newArticle;
 }
+
+const article = document.querySelector(".articles")
+data.forEach(data => {
+    article.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
