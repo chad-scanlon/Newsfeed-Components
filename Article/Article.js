@@ -151,8 +151,9 @@ const createArticle = (title, date, first, second, third) => {
         // firstParagraph.classList.add("article", "close")
         // secondParagraph.classList.add("article", "close");
         // thirdParagraph.classList.add("article", "close");
-    expandBtn.textContent = "Expand"
+        // expandBtn.textContent = "Expand"
     expandBtn.classList.add("article", "expandButton");
+
 
 
     articleTitle.textContent = title;
