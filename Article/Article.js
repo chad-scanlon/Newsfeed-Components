@@ -86,8 +86,8 @@ const data = [{
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
     },
     {
-        title: 'Rons 94 Meetings',
-        date: 'March 31 2010',
+        title: "Ron Swanson's 94 Meetings",
+        date: 'March 32nd TwoThousandAndNever',
         firstParagraph: 'Due to a mistake by April (Aubrey Plaza), Ron (Nick Offerman) is forced to deal with 93 meetings in a single day. He enlists the aid of April, Andy, Leslie and Ann to help handle them, while telling Jerry that he is free to go home early.',
 
         secondParagraph: 'Leslie is outraged when Jessica reveals her plans to demolish an old gazebo in the backyard of Turnbill Mansion, the site of a historic wedding between a Pawnee Native American and white woman, which became a "bloodbath" when knowledge of the wedding became public.',
@@ -142,17 +142,17 @@ const createArticle = (title, date, first, second, third) => {
     newArticle.appendChild(expandBtn);
 
 
-    newArticle.classList.add("articles");
+    newArticle.classList.add("article");
     articleTitle.classList.add("h2");
     articleDate.classList.add("date");
-    firstParagraph.style.display = "hidden"
-    secondParagraph.style.display = "hidden"
-    thirdParagraph.style.display = "hidden"
-        // firstParagraph.classList.add("article", "close")
-        // secondParagraph.classList.add("article", "close");
-        // thirdParagraph.classList.add("article", "close");
-        // expandBtn.textContent = "Expand"
-    expandBtn.classList.add("article", "expandButton");
+    // firstParagraph.style.display = "hidden"
+    // secondParagraph.style.display = "hidden"
+    // thirdParagraph.style.display = "hidden"
+    // firstParagraph.classList.add("article", "close")
+    // secondParagraph.classList.add("article", "close");
+    // thirdParagraph.classList.add("article", "close");
+    expandBtn.textContent = "\u25bc"
+    expandBtn.classList.add("expandButton");
 
 
 
@@ -164,13 +164,13 @@ const createArticle = (title, date, first, second, third) => {
 
     expandBtn.addEventListener("click", () => {
         newArticle.classList.toggle("article-open");
-        newArticle.classList.toggle("article", "close")
+        newArticle.classList.toggle("close")
         newArticle.appendChild(firstParagraph);
-        newArticle.appendChild(secondParagraph);
-        newArticle.appendChild(thirdParagraph);
-        firstParagraph.classList.add("article")
-        secondParagraph.classList.add("article");
-        thirdParagraph.classList.add("article");
+        firstParagraph.appendChild(secondParagraph);
+        secondParagraph.appendChild(thirdParagraph);
+        // firstParagraph.classList.add("article")
+        // secondParagraph.classList.add("article");
+        // thirdParagraph.classList.add("article");
     })
     return newArticle;
 }
