@@ -38,26 +38,44 @@ const createMenu = (items) => {
     const menu = document.createElement("div");
     const list = document.createElement("ul");
 
+    const students = document.createElement("li")
+    const faculty = document.createElement("li")
+    const newStuff = document.createElement("li")
+    const trends = document.createElement("li")
+    const exit = document.createElement("li")
 
 
     menu.appendChild(list)
+    list.appendChild(students)
+    list.appendChild(faculty)
+    list.appendChild(newStuff)
+    list.appendChild(trends)
+    list.appendChild(exit)
+
 
     menu.classList.add("menu")
+    list.classList.add("ui", "li")
 
-    items.forEach(item => {
-        let listItem = document.createElement("li")
-        listItem.textContent = "item"
-        list.appendChild(listItem)
-    });
+    students.textContent = menuItems[0]
+    faculty.textContent = menuItems[1]
+    newStuff.textContent = menuItems[2]
+    trends.textContent = menuItems[3]
+    exit.textContent = menuItems[4]
 
-    list.classList.add("menu", "ui", "li")
+    // items.forEach(listItem => {
+    //     let listItem = createElement("li")
+    //     list.appendChild(listItem)
+    // });
+
+
 
     const menuBtn = document.querySelector(".menu-button");
     menuBtn.addEventListener("click", () => {
         menu.classList.toggle("menu--open")
-    })
+        menu.classList.toggle("close")
+    });
     return menu;
 }
 
 const navMenu = document.querySelector(".header");
-navMenu.prepend(createMenu(menuItems))
+navMenu.appendChild(createMenu(menuItems))
